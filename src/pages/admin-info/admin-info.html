@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="backgroundcolor">
+      <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle>
+          <ion-icon name="menu" class="menuC"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title class="headerTitle-custom">Edit Contact US</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding class="content-background">
+    <div class=input-form>
+      <ion-list no-lines no-padding no-margins class="form-list">
+        <ion-item no-lines no-padding no-margins class="input-item">
+          <ion-label color="dark" stacked>Official Contact No</ion-label>
+          <ion-input type="tel" placeholder="Enter Mobile No" [(ngModel)]="info.Mobile"></ion-input>
+        </ion-item>
+        <ion-item no-lines no-padding no-margins class="input-item">
+            <ion-label color="dark" stacked>Official Email Id</ion-label>
+            <ion-input type="text" placeholder="Enter Email" [(ngModel)]="info.email"></ion-input>
+          </ion-item>
+          <ion-item no-lines no-padding no-margins class="input-item">
+              <ion-label color="dark" stacked>Official Website</ion-label>
+              <ion-input type="text" placeholder="Enter Website" [(ngModel)]="info.website"></ion-input>
+            </ion-item>
+ 
+        <ion-item no-lines no-padding no-margins class="input-item">
+            <ion-label color="dark" stacked>Office Address</ion-label>
+            <ion-textarea rows="2" placeholder="Enter Office Address" [(ngModel)]="info.address" class="c-textArea" ></ion-textarea>
+          </ion-item>
+        <ion-item no-lines no-padding no-margins class="input-item">
+            <ion-label color="dark" stacked>Opening Time</ion-label>
+            <ion-input type="text" placeholder="Enter Opening Time" [(ngModel)]="info.opening_time"></ion-input>
+          </ion-item>
+       
+      
+      </ion-list>
+      <button ion-button full class="submit-button" color="secondary" (click)="addNew()">Update</button><br>
+    </div>
+  </ion-content>

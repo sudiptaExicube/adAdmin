@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar color="backgroundcolor">
+        <ion-buttons right>
+            <button ion-button class="header-button-custom" menuToggle right>
+                <ion-icon name="menu" class="menuC"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title class="headerTitle-custom">Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding class="content-background">
+    <div class=input-form>
+        <ion-list no-lines no-padding no-margins class="form-list">
+            <ion-item no-lines no-padding no-margins class="input-item">
+                <ion-label color="primary" stacked>Full Name</ion-label>
+                <ion-input type="text" placeholder="Enter name" [(ngModel)]="userData.fullname"></ion-input>
+            </ion-item>
+            <ion-item no-lines no-padding no-margins class="input-item">
+                    <ion-label color="primary" stacked>User Name</ion-label>
+                    <ion-input type="text" placeholder="Enter username" readonly [(ngModel)]="userData.username"></ion-input>
+            </ion-item>
+            <ion-item no-lines no-padding no-margins class="input-item">
+                    <ion-label color="primary" stacked>Email</ion-label>
+                    <ion-input type="text" placeholder="Enter email" readonly [(ngModel)]="userData.email"></ion-input>
+            </ion-item>
+        
+            <ion-item no-lines no-padding no-margins class="input-item">
+                    <ion-label color="primary" stacked>Website</ion-label>
+                    <ion-input type="text" placeholder="Enter website" [(ngModel)]="userData.website"></ion-input>
+            </ion-item>
+            <ion-item no-lines no-padding no-margins class="input-item">
+                    <ion-label color="primary" stacked>State</ion-label>
+                    <ion-input type="text" placeholder="Enter state" [(ngModel)]="userData.state"></ion-input>
+            </ion-item>
+            <ion-item no-lines no-padding no-margins class="input-item">
+                    <ion-label color="primary" stacked>City</ion-label>
+                    <ion-input type="text" placeholder="Enter city" [(ngModel)]="userData.city"></ion-input>
+            </ion-item>
+            <ion-item no-lines no-padding no-margins class="input-item">
+                <ion-label color="primary" stacked>Password</ion-label>
+                <ion-input type="text" placeholder="Enter city" [(ngModel)]="userData.password"></ion-input>
+        </ion-item>
+        </ion-list>
+        <button ion-button full class="login-btn"  (click)="update()">UPDATE</button>
+    </div>
+</ion-content>

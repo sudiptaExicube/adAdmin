@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar  color="backgroundcolor">
+    <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle >
+            <ion-icon name="menu"  class="menuC"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom" >Earning Details</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+      <div class="searchbar-container">
+        <ion-searchbar  class="custom-searchbar" (ionInput)="getItems($event)" placeholder="Search by Booking ID">
+        </ion-searchbar>
+      </div>
+  
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    
+  <div class="main-container">
+    <div style="display:flex;flex:1;justify-content:center;align-items:center" *ngIf="newOrders ==''">NO EARNING FOUND</div>
+      <ion-list>
+        <ion-item-sliding *ngFor="let order of newOrders; let i = index">
+          <ion-item>
+            <div item-start class="item-segment1" >
+              <h2><span style="color:black">Order Date:&nbsp;</span>{{order.bookingDate}}</h2>
+              <h2>{{order.bookingTime}}</h2>
+              <h3><span style="color:black">OrderId:&nbsp;</span>{{order.bookingId}}</h3>
+              <h3><span style="color:black">Total Amount:&nbsp;</span> ₹{{order.orderPrice}}</h3>
+              <h3><span  style="color:black">Address - </span>  {{order?.orderAddress?.flatOrHouseNo}}, {{order?.orderAddress?.streetOrLocality}}, {{order?.orderAddress?.landmark}},
+                {{order?.orderAddress?.city}} - {{order?.orderAddress?.Pincode}}</h3>
+            </div>
+            <div class="item-segment2" >
+              <h3>Paymnet: <span>{{order.paymentStatus}}</span></h3>
+              <h3 ><img src="assets/imgs/phone.png"/>{{order.orderAddress.mobileNo}} </h3>
+            </div>
+          </ion-item>
+    
+        </ion-item-sliding>
+       
+      </ion-list>
+  </div>
+</ion-content>

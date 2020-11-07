@@ -1,0 +1,15 @@
+.header::after{
+    background-image: none !important;
+}
+// .toolbar-background {
+//     background: color($colors,backgroundcolor);
+// }
+// .toolbar-title{color:#fff}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0;
+}
+.scroll-content {
+    // padding-bottom: 15px !important;
+    padding-bottom: 0 !important;
+    border-color: transparent !important;
+}

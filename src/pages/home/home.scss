@@ -1,0 +1,68 @@
+page-home {
+    .toolbar-background {
+        background: color($colors,backgroundcolor);
+    }
+
+    //header 
+    .header-button-custom{
+        margin-left: 5px;
+    }
+    .headerTitle-custom{
+       // text-align: center !important;
+        //padding-left: 10vw;
+        letter-spacing: 2px !important;
+        text-transform: capitalize;
+    }
+
+
+    //content start
+    ion-content{
+        background: color($colors,backgroundcolor) !important;
+        //background:color($colors, contentbg) !important;
+        .main-container{
+            display:flex;
+            flex-direction:column;
+            height:80%;
+        }
+        .dashboard-option-container{
+            display:flex;
+            flex-direction:row;
+            flex:1;
+            //background: red;
+            justify-content: space-between;
+            padding:12px;
+            padding-bottom:0px;
+           
+        }
+        .box1{
+            flex:1;
+            background-color:color($colors, light);
+            margin-right:8px;
+            border-radius:6px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .box2{
+            flex:1;
+            background-color:color($colors, light);
+            margin-left:8px;
+            border-radius:6px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center; 
+        }
+        .sub-img-container{
+            flex:1;
+            padding: 16px 8px 0px 14px;
+        }
+        .sub-des-text{
+            flex:1;
+            padding: 0px 31px 0px 14px;
+            font-size:14px;
+            color:color($colors, secondary);
+        }
+        .img-style{height:50px;width:50px}
+        .img-style2{height:50px}
+    }
+}

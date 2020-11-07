@@ -1,0 +1,19 @@
+page-order-details {
+    ion-header{
+        background: color($colors, light);
+        .searchbar-container{
+                background:color($colors, contentbg) !important;
+        .custom-searchbar{    
+            padding: 8px 18px 8px 18px !important;
+            .searchbar-input-container{      
+                .searchbar-input{
+                    border-radius: 6px !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
+    }
+    } .scroll-content {
+        padding:1px 0px 13px 0px !important;
+    }
+}

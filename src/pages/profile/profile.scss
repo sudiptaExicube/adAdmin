@@ -1,0 +1,51 @@
+page-profile {
+    .headerTitle-custom{
+        text-align: center !important;
+        letter-spacing: 2px !important;
+    }
+    ion-content{
+        background:color($colors, contentbg) !important;
+         .input-item{
+            background:color($colors, contentbg) !important; 
+         }
+          .input-form{
+              max-width: 450px;
+              margin: 0 auto;
+              width: 100%;
+              padding: 0 16px;
+              
+              .form-list{
+                  margin: 4% 0 15%;
+              }
+              .form-select-list{
+                  margin: 2% 0 15%;
+              }
+              h3{
+                  color: color($colors, primary2);
+                  letter-spacing: 1px;
+              }
+              .SubHeading{ 
+                  color: color($colors, primary2);
+                  font-size: 12px;
+                  letter-spacing: 0.3px;
+                  margin-top: 0px;
+              }
+              .lockIcon{
+                  font-size:18px;
+              }
+          }
+          .form-list.select-option{
+              margin: 0;
+              border-bottom: 1.5px solid color($colors, primary2);
+              color: color($colors, primary2);
+              letter-spacing: 1px;
+              font-weight: 500;
+          }
+          .login-btn{
+            letter-spacing: 2px;
+            background: color($colors,buttoncolorOne);
+            height: 50px;
+            
+        }
+        } 
+}

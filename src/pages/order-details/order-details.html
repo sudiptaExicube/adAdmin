@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-navbar color="backgroundcolor">
+    <ion-buttons left>
+      <button ion-button class="header-button-custom" menuToggle>
+        <ion-icon name="menu" class="menuC"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom">Order Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color:#f4f5f5 !important">
+  <div style="padding:18px 12px 18px 12px;background-color:#fff; box-shadow: 0px 0.5px #888888;">
+    <div style="display:flex;flex-direction:column">
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ACOUNT NAME</div>
+      <div style="font-size:16px;padding-bottom:12px;font-weight:bold;color:#71737D;">{{originalname}}</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ORDER ID</div>
+      <div style="font-size:16px;padding-bottom:12px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingId}}</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">DELIVERY DATE</div>
+      <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?bookingdata.bookingDate:null}}</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">DELIVARY TIME</div>
+      <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingTime}}</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ORDER STAUS</div>
+      <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingStatus}}</div>
+      <button ion-button color="danger" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'PENDING'" (click)="changeStatus('ACCEPTED','accept')">ACCEPT ORDER</button>
+      <button ion-button color="fbBtnColor" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'ACCEPTED'" (click)="changeStatus('START','start')">START SERVICE</button>
+      <button ion-button color="secondary" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'START'" (click)="changeStatus('END','complete')">SERVICE DONE</button>
+    </div>
+  </div>
+  <div style="margin-top:10px;background-color:#fff; box-shadow: 0px 0.5px #888888;padding-bottom:10px">
+    <div style="display:flex;flex-direction:column">
+      <div style="border-bottom:1px solid #d7d8d8;padding:18px 12px 18px 12px;font-size:14px; color:#71737D;margin-bottom:18px">
+        CUSTOMER LOCATION
+      </div>
+      <div style="background-color:#fff;padding:0px 12px 18px 12px">
+        <h5 style="font-weight:bold;margin-bottom:12px">{{bookingdata?.orderAddress?.fullName}}</h5>
+        <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
+          {{bookingdata?.orderAddress?.flatOrHouseNo}}, {{bookingdata?.orderAddress?.streetOrLocality}}, {{bookingdata?.orderAddress?.landmark}},
+          {{bookingdata?.orderAddress?.city}} - {{bookingdata?.orderAddress?.Pincode}}</div>
+      </div>
+      <div style="background-color:#fff;padding:6px 12px 10px 12px">
+        <h6 style="font-weight:bold">Primary mobile number</h6>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+          <div> {{bookingdata?.orderAddress?.mobileNo}}</div>
+          <div style="background-color: #3E5A99;padding: 6px;color: #fff;border-radius: 2px" (click)="callnow(bookingdata?.orderAddress?.mobileNo)">Call Now</div>
+        </div>
+      </div>
+      <div style="background-color:#fff;padding:6px 12px 10px 12px" *ngIf="bookingdata?.orderAddress?.altMobileNo !=''">
+        <h6 style="font-weight:bold">Secondary mobile number</h6>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+          <div> {{bookingdata?.orderAddress?.altMobileNo}}</div>
+          <div style="background-color: #3E5A99;padding: 6px;color: #fff;border-radius: 2px" (click)="callnow(bookingdata?.orderAddress?.altMobileNo)">Call Now</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:10px;background-color:#fff; box-shadow: 0px 0.5px #888888;">
+    <div style="display:flex;flex-direction:column">
+      <div style="border-bottom:1px solid #d7d8d8;padding:18px 12px 18px 12px;margin-bottom:18px;font-size:14px; color:#71737D">
+        ORDERS DETAILS
+      </div>
+      <div style="background-color:#fff;padding:0px 12px 18px 12px" *ngFor="let order of bookingdata?.orders; let i=index">
+        <h5 style="font-weight:bold;margin-bottom:12px;">{{order.subcat_name}}</h5>
+        <div style="margin-top:6px;padding-right:60px;line-height:23px; font-size:16px">
+          <strong>Order descriptions: </strong> {{order.subcat_description}}</div>
+        <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
+          <strong>Order Price: </strong> ₹{{order.subcat_price}} </div>
+        <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
+          <strong>Service for: </strong> {{order.serviceFor}} </div>
+        <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
+          <strong>Product code: </strong>{{order.subcat_code}} </div>
+        <div *ngIf="!bookingdata?.paymentStatus" style="margin-top: 18px;padding-top: 8px;padding-bottom: 8px;display:flex;flex-direction:row;justify-content:space-between">
+          <div style="display:flex;flex-direction:row">
+              <div (click)="decreseQty(order,bookingdata,i)" ><ion-icon ios="ios-remove-circle" md="md-remove-circle" style="color:red;font-size:35px"></ion-icon></div>
+              <div style="padding: 10px;padding-top: 6px;padding-bottom: 6px;font-size: 18px;font-weight: bold;text-align: center;">Qty {{order.qty}}</div>
+              <div (click)="increseQty(order,bookingdata,i)"><ion-icon ios="ios-add-circle" md="md-add-circle" style="color:green;font-size:35px"></ion-icon></div>
+          </div>
+          <div (click)="deleteItem(i)"> <img src="assets/imgs/remove.png" style="height:25px;width:23px"/></div>      
+        </div>
+        <div style="border-bottom:1px solid #d7d8d8;margin-top:18px;margin-bottom:4px" *ngIf="!(i == bookingdata?.orders.length-1)"></div>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid #d7d8d8;display:flex;flex-direction:row;justify-content:space-between;margin-top:12px" *ngIf="bookingdata?.bookingStatus == 'PENDING' || bookingdata?.bookingStatus == 'ACCEPTED'">
+      <div style="width:50%;padding:10px;text-align:center;background-color:#000;color:#fff;font-size:16px" (click)="changeStatus('CANCEL','cancel')">CANCEL</div>
+      <div style="width:50%;padding:10px;border-left:0.5px solid #888888;text-align:center;background-color:#3E5A99;color:#fff;font-size:16px"
+        (click)="reschedule()">RESCHEDULE</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;background-color:#fff; box-shadow: 0px 0.5px #888888;">
+    <div style="display:flex;flex-direction:column">
+      <div style="border-bottom:1px solid #d7d8d8;padding:18px 12px 18px 12px;font-size:14px; color:#71737D">
+        PAYMENT DETAILS
+      </div>
+      <div style="background-color:#fff;padding:18px 12px 18px 12px">
+        <div *ngFor="let item of bookingdata?.orders; let j=index" style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-size:15px">{{item.subcat_name}}<br>( {{item.original_price}} X {{item.qty}} )</div>
+          <div style="font-size:15px">{{item?.subcat_price.toFixed(2)}}</div>
+        </div>
+
+        <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid #d7d8d8;margin-bottom:10px">
+          <div style="font-weight:bold;font-size:17px;">Grand Total</div>
+          <div style="font-weight:bold;font-size:17px">₹{{bookingdata.orderPrice?bookingdata.orderPrice.toFixed(2):0.00}}</div>
+        </div>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid #d7d8d8">
+          <div style="font-weight:bold;font-size:16px;">Payment status</div>
+          <div style="font-weight:bold;font-size:16px">{{bookingdata.paymentStatus?bookingdata.paymentStatus:'DUE'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-bottom:30px;" *ngIf="bookingdata?.bookingStatus == 'END' && !bookingdata?.paymentStatus"></div>
+</ion-content>
+<ion-footer style="padding:0px !important" *ngIf="bookingdata?.bookingStatus == 'END' && !bookingdata?.paymentStatus" (click)="paynow()">
+  <div style="display:flex;flex-direction:row;justify-content:space-between">
+    <div style="color:#fff;width:100%;padding:12px;text-align:center;background-color:rgb(6, 138, 17)">PAYMENT DONE</div>
+  </div>
+</ion-footer>

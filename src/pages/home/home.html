@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar  color="backgroundcolor">
+    <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle >
+            <ion-icon name="menu"  class="menuC"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom" >AD ADMIN</ion-title>
+  </ion-navbar>
+</ion-header>
+
+ <ion-content padding>   
+    <div class="main-container">
+        <div class="dashboard-option-container">
+          <div class="box1" (click)="earningDetails('EarningListPage','todays')">
+            <div class="sub-img-container">
+              <div style="font-size:30px;font-weight:700">₹{{today}}</div>
+              <!-- <img src="assets/imgs/update-aacount.png" style="height:40px;width:38px" /> -->
+            </div>
+            <div class="sub-des-text">Todays Total Earning</div>
+          </div>
+          <div class="box2" (click)="earningDetails('EarningListPage','monthly')">
+            <div class="sub-img-container">
+                <div style="font-size:30px;font-weight:700">₹{{MonthlyIncome}}</div>
+              <!-- <img src="assets/imgs/my-plan.png" style="height:40px;width:38px" /> -->
+            </div>
+            <div class="sub-des-text">Last 30 Days Earning</div>
+          </div>
+        </div>
+     
+        <div class="dashboard-option-container">
+          <div class="box1" (click)="doaction('NewOrdersPage')">
+            <div class="sub-img-container">
+              <img src="assets/imgs/new-order.png" class="img-style" />
+            </div>
+            <div class="sub-des-text">Manage New Orders</div>
+              
+          </div>
+          <div class="box2" (click)="doaction('RunningOrdersPage')">
+            <div class="sub-img-container">
+              <img src="assets/imgs/manage-vistors.png" class="img-style2" />
+            </div>
+           
+            <div class="sub-des-text">Manage Running Orders</div>
+          </div>
+        </div>
+        <div class="dashboard-option-container" style="padding:12px">
+            <div class="box1" (click)="doaction('AddNewProductPage')">
+              <div class="sub-img-container">
+                <img src="assets/imgs/add_product.ico" class="img-style" />
+              </div>
+              <div class="sub-des-text">Add New Product</div>
+            </div>
+            <div class="box2"  (click)="doaction('AllProductsPage')">
+              <div class="sub-img-container">
+                <img src="assets/imgs/product_edit.png" class="img-style" />
+              </div>
+              <div class="sub-des-text">Manage All Products</div>
+            </div>
+          </div>
+          
+      </div>
+</ion-content>

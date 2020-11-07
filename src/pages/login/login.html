@@ -1,0 +1,18 @@
+<ion-content padding class="custom-content">
+  <div class="main-div">
+    <div class="div-one">AD Salon Admin Portal </div>
+    <div class="div-two">
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">EMAIL</ion-label>
+        <ion-input class="custom-input" type="text" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">PASSWORD</ion-label>
+        <ion-input class="custom-input" type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+    </div>
+    <div class="div-three">
+        <button ion-button block class="login-btn" (click)="loginUser()">LOGIN</button>
+    </div>
+  </div>
+</ion-content>

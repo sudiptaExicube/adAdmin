@@ -1,0 +1,38 @@
+
+<ion-header>
+  <ion-navbar  color="backgroundcolor">
+    <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle >
+            <ion-icon name="menu"  class="menuC"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom" >Edit Service</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="content-background">
+  <div class=input-form>
+    <ion-list no-lines no-padding no-margins class="form-list">
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Code</ion-label>
+        <ion-input type="text" placeholder="Enter first name" readonly [(ngModel)]="subcat_code"></ion-input>
+        <ion-icon class="eye_icon lockIcon" color="secondary" name="md-lock" item-right></ion-icon>
+      </ion-item>
+ 
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Name</ion-label>
+        <ion-input type="text"  placeholder="Service Name" [(ngModel)]="subcat_name"></ion-input>
+        
+      </ion-item>
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Price</ion-label>
+        <ion-input type="tel"  placeholder="Service Price" [(ngModel)]="subcat_price"></ion-input>
+      </ion-item>
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Descriptions</ion-label>
+        <ion-textarea rows="2" maxlength ='40' placeholder="Service Details" class="c-textArea" [(ngModel)]="subcat_description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button full class="submit-button" color="secondary" (click)="update()">UPDATE</button>
+  </div>
+</ion-content>
+

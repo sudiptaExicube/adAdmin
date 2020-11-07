@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="backgroundcolor">
+    <ion-buttons left>
+      <button ion-button class="header-button-custom" menuToggle>
+        <ion-icon name="menu" class="menuC"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom">Add Service</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="content-background">
+  <div class=input-form>
+    <ion-list no-lines no-padding no-margins class="form-list">
+      <ion-item no-padding no-margins class="input-item select-option">
+        <ion-label color="primary" stacked>Service For</ion-label>
+        <ion-select [(ngModel)]="serviceFor" (ionChange)="onChange($event)">
+          <ion-option value="select" disabled>Select</ion-option>
+          <ion-option value="0">Male</ion-option>
+          <ion-option value="1">Female</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-padding no-margins class="input-item select-option">
+        <ion-label color="primary" stacked>Service Category</ion-label>
+        <ion-select [(ngModel)]="categoryName" (ionChange)="catNameChange($event)">
+          <ion-option *ngFor="let cat of allCatList; let i=index" value="{{i}}">{{cat.catName}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-padding no-margins class="input-item select-option" style="pointer-events: none;opacity:0.8">
+        <ion-label color="primary" stacked>Category Code </ion-label>
+        <ion-select [(ngModel)]="categoryCode">
+          <ion-option *ngFor="let cat of allCatList; let j=index" value="{{j}}" disabled>{{cat.catCode}}</ion-option>
+        </ion-select>
+      </ion-item>
+        <!-- <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service ID</ion-label>
+        <ion-input type="text" placeholder="Enter Service Code" [(ngModel)]="subcat_code"></ion-input>
+      </ion-item> -->
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Name</ion-label>
+        <ion-input type="text" placeholder="Service Name" [(ngModel)]="subcat_name"></ion-input>
+      </ion-item>
+      <!-- <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service ID</ion-label>
+        <ion-input type="text" placeholder="Enter Service Code" [(ngModel)]="subcat_code"></ion-input>
+      </ion-item> -->
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Price</ion-label>
+        <ion-input type="tel" placeholder="Service Price" [(ngModel)]="subcat_price"></ion-input>
+      </ion-item>
+      <ion-item no-lines no-padding no-margins class="input-item">
+        <ion-label color="dark" stacked>Service Descriptions</ion-label>
+        <ion-textarea rows="2" placeholder="Service Short Details" class="c-textArea" maxlength ='40' [(ngModel)]="subcat_description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button full class="submit-button" color="secondary" (click)="addNew()">Add New</button><br>
+  </div>
+</ion-content>

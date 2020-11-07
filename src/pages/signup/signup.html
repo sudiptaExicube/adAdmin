@@ -1,0 +1,34 @@
+<ion-content padding class="custom-content">
+  <div class="main-div">
+
+    <div class="div-one">Sign Up</div>
+
+    <div class="div-two">
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">FULL NAME</ion-label>
+        <ion-input class="custom-input" type="text" [(ngModel)]="newUser.fullname"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">USER NAME</ion-label>
+        <ion-input class="custom-input" type="text" [(ngModel)]="newUser.username"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">EMAIL</ion-label>
+        <ion-input class="custom-input" type="email" [(ngModel)]="newUser.email"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">CREATE PASSWORD</ion-label>
+        <ion-input class="custom-input" type="password" [(ngModel)]="newUser.password"></ion-input>
+      </ion-item>
+      <ion-item class="custom-item" no-padding>
+        <ion-label floating class="custom-lebel">CONFIRM PASSWORD</ion-label>
+        <ion-input class="custom-input" type="password" [(ngModel)]="newUser.confpassword"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="div-three">
+      <button ion-button block class="login-btn" (click)="signupFunc()">SIGN UP</button>
+    </div>
+
+  </div>
+</ion-content>

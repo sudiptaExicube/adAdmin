@@ -1,0 +1,65 @@
+page-signup {
+    .custom-content{
+        background: color($colors,backgroundcolor);
+        .main-div{
+            padding: 0 4vw;
+            //div-one
+            .div-one{
+                padding: 16vw 0 0 0; 
+                font-size: 18px; 
+                font-weight: bold; 
+                letter-spacing: 2px;
+                color: color($colors, light);
+            }
+            //div-two
+            .div-two{
+                padding: 13vw 0 0 0; 
+                .custom-item{
+                    background: transparent;
+                    padding-bottom: 5vw;
+                    .item-inner{
+                        padding-right: 0 !important;
+                        border-bottom: 1px solid;
+                        border-bottom-color: color($colors, light) !important;
+                    }
+                    
+                }
+                .custom-lebel{
+                    color:color($colors, light) !important; 
+                    font-size: 13px;
+                    letter-spacing: 1.2px;
+                    font-weight: 300;
+                }
+                .custom-input{
+                    height: 54px;
+                    color: color($colors, light);
+                    
+                }
+            }
+            //div-three
+            .div-three{
+                padding: 13vw 0 0 0; 
+                padding-bottom: 5vw;
+                .button{
+                    background: color($colors,buttoncolorOne) !important;
+                }
+                .login-btn{
+                    letter-spacing: 2px;
+                    background: color($colors,buttoncolorOne);
+                    height: 50px;
+                }    
+            }
+            
+        }
+    }
+
+
+
+    
+    
+    
+
+
+    
+    
+}

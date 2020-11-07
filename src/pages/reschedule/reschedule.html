@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar  color="backgroundcolor">
+    <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle >
+            <ion-icon name="menu"  class="menuC"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom" >Order Reschedule</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="main-container">
+    <div style="margin-bottom: 14px;font-size: 16px;">Choose Time Slot</div>
+    <div class="parent">
+      <div class="child" *ngFor="let item of TimeSlots; let i=index;" (tap)="selectTime(i)" [ngStyle]="{'background-color': item.active == true?'#3E5A99':'#fff','color': item.active == true?'#fff':'#000'}">
+       {{item.time}}
+      </div>
+    </div>
+    <div style="margin-bottom: 14px;font-size: 16px;margin-top:14px">Choose Date</div>
+    <ion-list no-lines no-padding no-margins class="form-list">
+          <ion-item no-lines no-padding no-margins style="background-color: #f4f5f5;
+          border-bottom: 1px solid #222">
+          <ion-datetime style="padding: 0 !important" displayFormat="DD/MM/YYYY" placeholder="MM/DD/YYYY" [(ngModel)]="bookingDate" [min]="currentDate" [max]="maxdate"></ion-datetime>
+          </ion-item>
+      </ion-list>
+  </div>
+</ion-content>
+<ion-footer style="padding:0px !important" (click)="update()">
+    <div style="display:flex;flex-direction:row;justify-content:space-between">
+        <div style="color:#fff;width:100%;padding:12px;text-align:center;background-color:rgb(6, 138, 17)">UPDATE</div>
+      </div>
+  </ion-footer>

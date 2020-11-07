@@ -1,0 +1,128 @@
+page-login {
+    .custom-content{
+        background: color($colors,backgroundcolor) !important;
+        .main-div{
+            padding: 0 4vw;
+            //div-one
+            .div-one{
+                padding: 16vw 0 0 0; 
+                font-size: 18px; 
+                font-weight: bold; 
+                letter-spacing: 2px;
+                color: color($colors, light);
+            }
+            //div-two
+            .div-two{
+                padding: 13vw 0 0 0; 
+                .custom-item{
+                    background: transparent;
+                    .item-inner{
+                        padding-right: 0 !important;
+                        border-bottom: 1px solid;
+                        border-bottom-color: color($colors, light) !important;
+                    }
+                    &:first-child{
+                        padding-bottom: 5vw;
+                    }
+                    .custom-lebel{
+                        color:color($colors, light) !important; 
+                        font-size: 13px;
+                        letter-spacing: 1.2px;
+                        font-weight: 300;
+                    }
+                    .custom-input{
+                        height: 54px;
+                        color: color($colors, light);  
+                    }
+                }
+            }
+
+            //div-three
+            .div-three{
+                padding: 13vw 0 0 0; 
+                .button{
+                    background: color($colors,buttoncolorOne) !important;
+                }
+                .login-btn{
+                    letter-spacing: 2px;
+                    background: color($colors,buttoncolorOne);
+                    height: 50px;
+                    
+                }
+            }
+
+            //div-four
+            .div-four{
+                padding: 5vw 0;
+                text-align: center;
+                color:color($colors,textcolorOne);
+                font-size: 12px;
+                letter-spacing: 1.2px;
+                .custon-signup{
+                    color:color($colors, buttoncolorOne);
+                }
+            }
+
+            
+            .header {
+                width: 70vw;
+                margin: 2vw auto;
+                text-align: center;
+                font-size: 13px;
+                position: relative;
+                background-color: #120F22;
+                opacity: 0.6;
+                .header-span {
+                    background-color: #120F22;
+                    width: auto;
+                    display: inline-block;
+                    z-index: 3;
+                    padding: 0 20px 0 20px;
+                    color: color($colors,textcolorOne);;
+                    position: relative;
+                    font-weight: lighter;
+                    margin: 0;
+                    font-size: 12px;
+                    letter-spacing: 1.2px;
+                }
+            }
+            .header:after {
+                content: '';
+                width: 100%;
+                border-bottom: solid 1px color($colors,textcolorOne);
+                position: absolute;
+                left: 0;
+                top: 2vw;
+                z-index: 1;
+            }
+            //Div five
+            .div-five{
+                padding:4vw 0 0 0;
+                .button{
+                    background: color($colors,fbBtnColor) !important;
+                }
+                //facebook button
+                .fb-btn{
+                    background: color($colors,fbBtnColor);
+                    letter-spacing: 2px;
+                    height: 50px;
+                    .fb-img{
+                        width:16px;
+                    }
+                    .fb-text{
+                        margin: 2px 0 0 5px;
+                        font-size: 12px;
+                        text-transform: none;
+                        font-weight: 100;
+                        letter-spacing: 1px;
+                    }
+                    .fb-span{
+                        font-weight: bold
+                    }
+                }
+            }
+     
+        }
+    }
+ 
+}

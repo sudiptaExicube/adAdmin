@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar  color="backgroundcolor">
+    <ion-buttons left>
+        <button ion-button class="header-button-custom" menuToggle left>
+            <ion-icon name="menu"  class="menuC"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="headerTitle-custom" >Products</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+  <ion-segment [(ngModel)]="pet">
+    <ion-segment-button value="puppies">
+      Male Products
+    </ion-segment-button>
+    <ion-segment-button value="kittens">
+      Female Products
+    </ion-segment-button>
+  </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+ <ion-content class="custom-content">   
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'puppies'">
+      <ion-item *ngFor="let maleP of mProducts; let i=index" (click)="viewProductsDetails('male',i)">
+        <ion-thumbnail item-start>
+          <img src="{{maleP.cat_image}}" style="height:75px">
+        </ion-thumbnail>
+        <h2>{{maleP.cat_name}}</h2>
+        <h2 style="margin-top:7px">Cat Code - {{maleP.cat_code}}</h2>
+      </ion-item>
+     
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item *ngFor="let fmaleP of fProducts; let j=index" (click)="viewProductsDetails('female', j)">
+        <ion-thumbnail item-start>
+          <img src="{{fmaleP.cat_image}}" style="height:75px">
+        </ion-thumbnail>
+        <h2>{{fmaleP.cat_name}}</h2>
+        <h2 style="margin-top:7px">Cat Code - {{fmaleP.cat_code}}</h2>
+      </ion-item>
+     
+    </ion-list>
+
+   
+  </div>
+</ion-content>
