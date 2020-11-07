@@ -1,12 +1,11 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { Media, MediaObject } from '@ionic-native/media';
 import {UserServiceProvider} from '../../providers/user-service/user-service';
 import { CustomService } from './../../app/customservice';
 import { StarRatingModule } from 'ionic3-star-rating';
 import { Events } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig, AdMobFreeRewardVideoConfig} from '@ionic-native/admob-free';
+// import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig, AdMobFreeRewardVideoConfig} from '@ionic-native/admob-free';
 
 @IonicPage()
 @Component({
@@ -39,11 +38,10 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public zone: NgZone,
-    private media: Media,
     public loadingCtrl: LoadingController,
     public cs: CustomService,
     public events: Events,
-    private admobFree: AdMobFree
+    // private admobFree: AdMobFree
    
   ) {
     this.MonthlyIncome = 0;
@@ -51,17 +49,17 @@ export class HomePage {
     this.calculateIncome()
   }
   BannerAd() {
-    let  bannerConfig: AdMobFreeBannerConfig = {
-      isTesting: false, // Remove in release version
-      autoShow: true,
-      id: "ca-app-pub-2777794657211524/5344070337"
-    };
+    // let  bannerConfig: AdMobFreeBannerConfig = {
+    //   isTesting: false, // Remove in release version
+    //   autoShow: true,
+    //   id: "ca-app-pub-2777794657211524/5344070337"
+    // };
 
-    this.admobFree.banner.config(bannerConfig);
+    // this.admobFree.banner.config(bannerConfig);
 
-    this.admobFree.banner.prepare().then(() => {
-      // success
-    }).catch(e => alert(e));
+    // this.admobFree.banner.prepare().then(() => {
+    //   // success
+    // }).catch(e => alert(e));
   }
   
   ionViewDidLoad() {

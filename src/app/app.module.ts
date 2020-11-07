@@ -7,14 +7,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomService } from './customservice';
 //plugins
-import { Media } from '@ionic-native/media';
 import { HTTP } from '@ionic-native/http';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { StarRatingModule } from 'ionic3-star-rating';
 import * as firebase from 'firebase';
 import { CommonModule } from '@angular/common';
 import { CallNumber } from '@ionic-native/call-number';
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+// import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 var firebaseConfig = {
   apiKey: "AIzaSyAn9HZ9eS9M1gHgHNg4LsgJtbto5oSAPfo",
   authDomain: "salon-ef6a7.firebaseapp.com",
@@ -47,9 +46,9 @@ firebase.initializeApp(firebaseConfig);
     SplashScreen,
     CustomService,
     CallNumber,
-    AdMobFree,
+    // AdMobFree,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Media,HTTP,
+    HTTP,
     UserServiceProvider
   ]
 })
