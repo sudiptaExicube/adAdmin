@@ -23,9 +23,9 @@
         <ion-item-sliding *ngFor="let order of newOrders; let i = index">
           <ion-item>
             <div item-start class="item-segment1" >
-              <h2><span style="color:black">Order Date:&nbsp;</span>{{order.bookingDate}}</h2>
+              <h2><span style="color:black">Service Date:&nbsp;</span>{{order.bookingDate}}</h2>
               <h2>{{order.bookingTime}}</h2>
-              <h3><span style="color:black">OrderId:&nbsp;</span>{{order.bookingId}}</h3>
+              <h3><span style="color:black">ServiceId:&nbsp;</span>{{order.bookingId}}</h3>
               <h3><span style="color:black">Total Amount:&nbsp;</span> ₹{{order.orderPrice}}</h3>
               <h3><span  style="color:black">Address - </span>  {{order?.orderAddress?.flatOrHouseNo}}, {{order?.orderAddress?.streetOrLocality}}, {{order?.orderAddress?.landmark}},
                 {{order?.orderAddress?.city}} - {{order?.orderAddress?.Pincode}}</h3>

@@ -6,7 +6,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { CustomService } from './customservice';
 import { HTTP } from '@ionic-native/http';
 import * as firebase from 'firebase';
-
+import { AlertController } from 'ionic-angular';
 
 //Plugins
 @Component({
@@ -14,7 +14,7 @@ import * as firebase from 'firebase';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  firebasePlugin: any;
   rootPage: any;
   pages: Array<{ title: string, component: any }>;
 
@@ -25,7 +25,8 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public zone: NgZone,
     public cs: CustomService,
-    private http: HTTP) {
+    private http: HTTP,
+    public alertCtrl: AlertController) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -42,7 +43,7 @@ export class MyApp {
   //       this.loginCheck()
   //       this.statusBar.styleBlackOpaque();
   //   });
-  // }
+  // }...............
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -52,11 +53,16 @@ export class MyApp {
   }
 loginCheck(){
   firebase.auth().onAuthStateChanged((user)=>{
-    if(user) {     
-      console.log(user);
+    if(user) {   
+      console.log(user)
       this.zone.run(()=>{
+        setTimeout(()=>{
+          this.getToken('VPaXsqXu6ANvwT16mfGHBF3UmNE3') 
+        },3000)
         this.splashScreen.hide();
-      this.rootPage = "HomePage"
+        this.rootPage = "HomePage"
+       
+         
     })
      /* firebase.database().ref('users/'+user.uid).once('value',(snap)=>{
         if(snap.val()){
@@ -95,6 +101,30 @@ logOut(){
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+
+  getToken(UID) {
+    let currentUser = UID;
+    this.firebasePlugin.getToken(token => {
+      console.log(token)
+      let data = {
+        fcmToken: token
+      }
+      firebase.database().ref('users/' + currentUser + '/').update(data).then(()=>{
+      })
+    });
+  }
+
+  onMessageReceived(message){
+    if (message.tap) { console.log(`Notification was tapped in the ${message.tap}`); }
+
+    const alert = this.alertCtrl.create({
+      title: 'Message received',
+      subTitle: JSON.stringify(message),
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
  

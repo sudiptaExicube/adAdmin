@@ -5,7 +5,7 @@
         <ion-icon name="menu" class="menuC"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title class="headerTitle-custom">Order Details</ion-title>
+    <ion-title class="headerTitle-custom">Service Details</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,15 +14,15 @@
     <div style="display:flex;flex-direction:column">
       <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ACOUNT NAME</div>
       <div style="font-size:16px;padding-bottom:12px;font-weight:bold;color:#71737D;">{{originalname}}</div>
-      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ORDER ID</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">SERVICE ID</div>
       <div style="font-size:16px;padding-bottom:12px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingId}}</div>
-      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">DELIVERY DATE</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Service DATE</div>
       <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?bookingdata.bookingDate:null}}</div>
-      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">DELIVARY TIME</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Service TIME</div>
       <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingTime}}</div>
-      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">ORDER STAUS</div>
+      <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Service STAUS</div>
       <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingStatus}}</div>
-      <button ion-button color="danger" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'PENDING'" (click)="changeStatus('ACCEPTED','accept')">ACCEPT ORDER</button>
+      <button ion-button color="danger" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'PENDING'" (click)="changeStatus('ACCEPTED','accept')">ACCEPT SERVICE</button>
       <button ion-button color="fbBtnColor" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'ACCEPTED'" (click)="changeStatus('START','start')">START SERVICE</button>
       <button ion-button color="secondary" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'START'" (click)="changeStatus('END','complete')">SERVICE DONE</button>
     </div>
@@ -58,14 +58,14 @@
   <div style="margin-top:10px;background-color:#fff; box-shadow: 0px 0.5px #888888;">
     <div style="display:flex;flex-direction:column">
       <div style="border-bottom:1px solid #d7d8d8;padding:18px 12px 18px 12px;margin-bottom:18px;font-size:14px; color:#71737D">
-        ORDERS DETAILS
+        SERVICE DETAILS
       </div>
       <div style="background-color:#fff;padding:0px 12px 18px 12px" *ngFor="let order of bookingdata?.orders; let i=index">
         <h5 style="font-weight:bold;margin-bottom:12px;">{{order.subcat_name}}</h5>
         <div style="margin-top:6px;padding-right:60px;line-height:23px; font-size:16px">
-          <strong>Order descriptions: </strong> {{order.subcat_description}}</div>
+          <strong>Service descriptions: </strong> {{order.subcat_description}}</div>
         <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
-          <strong>Order Price: </strong> ₹{{order.subcat_price}} </div>
+          <strong>Service Price: </strong> ₹{{order.subcat_price}} </div>
         <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">
           <strong>Service for: </strong> {{order.serviceFor}} </div>
         <div style="margin-top:6px;padding-right:60px;line-height:23px;font-size:16px">

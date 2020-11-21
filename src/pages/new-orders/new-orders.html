@@ -5,7 +5,7 @@
               <ion-icon name="menu"  class="menuC"></ion-icon>
           </button>
       </ion-buttons>
-      <ion-title class="headerTitle-custom" >New Orders</ion-title>
+      <ion-title class="headerTitle-custom" >New Service Requests</ion-title>
     </ion-navbar>
     <ion-toolbar no-border-top>
         <div class="searchbar-container">
@@ -18,14 +18,14 @@
   <ion-content>
       
     <div class="main-container">
-      <div style="display:flex;flex:1;justify-content:center;align-items:center" *ngIf="newOrders ==''">NO NEW ORDERS FOUND</div>
+      <div style="display:flex;flex:1;justify-content:center;align-items:center;text-transform:uppercase" *ngIf="newOrders ==''">NO NEW Services FOUND</div>
         <ion-list>
           <ion-item-sliding *ngFor="let order of newOrders; let i = index">
             <ion-item>
               <div item-start class="item-segment1" >
-                <h2><span style="color:black">Delivery Date:&nbsp;</span>{{order.bookingDate}}</h2>
+                <h2><span style="color:black">Service Date:&nbsp;</span>{{order.bookingDate}}</h2>
                 <h2>{{order.bookingTime}}</h2>
-                <h3><span style="color:black">OrderId:&nbsp;</span>{{order.bookingId}}</h3>
+                <h3><span style="color:black">ServiceId:&nbsp;</span>{{order.bookingId}}</h3>
                 <h3><span style="color:black">Price:&nbsp;</span> ₹{{order.orderPrice}}</h3>
               </div>
               <div class="item-segment2" >
