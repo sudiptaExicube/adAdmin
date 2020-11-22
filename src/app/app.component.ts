@@ -51,13 +51,20 @@ export class MyApp {
       this.statusBar.styleLightContent();
     });
   }
+
+  ionViewDidLoad() {
+
+    // this.getToken();
+  }
 loginCheck(){
   firebase.auth().onAuthStateChanged((user)=>{
     if(user) {   
       console.log(user)
       this.zone.run(()=>{
+        this.firebasePlugin = (<any>window).FirebasePlugin;
+        this.firebasePlugin.onMessageReceived(this.onMessageReceived.bind(this));
         setTimeout(()=>{
-          this.getToken('VPaXsqXu6ANvwT16mfGHBF3UmNE3') 
+          this.getToken(user.uid);
         },3000)
         this.splashScreen.hide();
         this.rootPage = "HomePage"
@@ -106,6 +113,8 @@ logOut(){
 
   getToken(UID) {
     let currentUser = UID;
+    console.log(this.firebasePlugin);
+    
     this.firebasePlugin.getToken(token => {
       console.log(token)
       let data = {
