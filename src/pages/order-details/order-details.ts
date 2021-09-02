@@ -4,6 +4,8 @@ import * as firebase from 'firebase';
 import { CustomService } from './../../app/customservice';
 import { AlertController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import {UserServiceProvider} from '../../providers/user-service/user-service';
+
 @IonicPage()
 @Component({
   selector: 'page-order-details',
@@ -14,7 +16,7 @@ export class OrderDetailsPage {
   originalname: any;
   orderp: any;
 
-  constructor(public navCtrl: NavController, private callNumber: CallNumber, public alertCtrl: AlertController, public navParams: NavParams, public cs: CustomService, ) {
+  constructor(public navCtrl: NavController, private callNumber: CallNumber, public alertCtrl: AlertController, public navParams: NavParams, public cs: CustomService, public userService: UserServiceProvider,) {
 
     if (this.navParams.get('orderparam')) {
       this.cs.presentLoadingDefault()
@@ -182,7 +184,8 @@ export class OrderDetailsPage {
               firebase.database().ref('users/' + this.orderp.uid + '/my_booking/' + this.orderp.orderid + '/').update({
                 bookingStatus: STATUS
               }).then(() => {
-
+                this.sendPush(this.orderp.uid, STATUS);
+                
                 this.cs.presentToast('Service ' + msg + ' Successfully');
                 STATUS == 'ACCEPTED' ? this.navCtrl.pop() : null
               })
@@ -193,6 +196,23 @@ export class OrderDetailsPage {
     });
     confirm.present();
   }
+
+  sendPush(userId, STATUS) {
+    firebase.database().ref('users/' + userId + '/fcmToken/').once('value', (snap) => {
+      if (snap.val()) {
+        let fcmToken = snap.val();
+        console.log(fcmToken);
+        
+        this.userService.sendPushNotification(fcmToken, STATUS)
+        .then((res)=>{
+          console.log(res);
+        })
+        .catch((e)=>console.log(e)
+        );
+      }
+    });
+  }
+
   paynow() {
     this.cs.presentLoadingDefault()
     const confirm = this.alertCtrl.create({

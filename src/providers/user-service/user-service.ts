@@ -60,6 +60,37 @@ export class UserServiceProvider {
     return this.https.post('https://dev6.ivantechnology.in/radioapp/server/xml.server.php?action=user_update&auth='+authKey+'&username='+username+'&password='+password, {}, HEADERS)
   }
 
+  sendPushNotification(token, msgBody) {
+    return new Promise((resolve, reject) => {
+      let url: string = 'https://fcm.googleapis.com/fcm/send';
+
+      let body: any = {
+        "to": token,
+        "notification": {
+          "title": "Check this Mobile (title)",
+          "body": msgBody,
+          "mutable_content": true,
+          "sound": "Tri-tone"
+        },
+    
+      "data": {
+          "url": "<url of media image>",
+          "dl": "<deeplink action on tap of notification>"
+        }
+      }
+      
+      this.httpclient.post(url, body, {
+        headers: new HttpHeaders().set('Authorization', 'key=AAAA7hYqhRE:APA91bHxeBpsR9j48kwt1IAvlK25X8INBQzTOUqDDMqVpiSb1impnQs-b9TWK7KMV-fTafMEm2UQx5_Jq37LpN04cH9T4S7b6a6v1rgd3fQPJSIISIy4vbG4vYGDWvLwM2CGwtcdXzyp'),
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        reject(err);
+        console.log(err);
+      });
+    });
+  }
+
   
 }
 //"https://dev6.ivantechnology.in/radioapp/server/xml.server.php?action=user_update&auth=69fed049b087faa18300920866701b6d&username=sudipta93&website=sudipta.com"

@@ -56,54 +56,57 @@ export class MyApp {
 
     // this.getToken();
   }
-loginCheck(){
-  firebase.auth().onAuthStateChanged((user)=>{
-    if(user) {   
-      console.log(user)
-      this.zone.run(()=>{
-        this.firebasePlugin = (<any>window).FirebasePlugin;
-        this.firebasePlugin.onMessageReceived(this.onMessageReceived.bind(this));
-        setTimeout(()=>{
-          this.getToken(user.uid);
-        },3000)
-        this.splashScreen.hide();
-        this.rootPage = "HomePage"
-       
-         
-    })
-     /* firebase.database().ref('users/'+user.uid).once('value',(snap)=>{
-        if(snap.val()){
-          let users = snap.val();
-          if(users.type='admin'){
-            this.zone.run(()=>{
-              this.splashScreen.hide();
-            this.rootPage = "HomePage"
-          })
-          }
-        }else{
-          this.logOut();
-        }*/
-     
-   // })
-     
-    }
-    else {
-      this.zone.run(()=>{
-        this.splashScreen.hide();
-        this.rootPage = "LoginPage";
-      console.log('no user')
-      })
-    }
-  })
-}
 
-logOut(){
-  firebase.auth().signOut().then(()=>{
-    this.zone.run(()=>{
-    this.rootPage = "LoginPage";
+
+  loginCheck(){
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user) {   
+        console.log(user)
+        this.zone.run(()=>{
+          this.firebasePlugin = (<any>window).FirebasePlugin;
+          this.firebasePlugin.onMessageReceived(this.onMessageReceived.bind(this));
+          setTimeout(()=>{
+            this.getToken(user.uid);
+          },3000)
+          this.splashScreen.hide();
+          this.rootPage = "HomePage"
+        
+          
+      })
+      /* firebase.database().ref('users/'+user.uid).once('value',(snap)=>{
+          if(snap.val()){
+            let users = snap.val();
+            if(users.type='admin'){
+              this.zone.run(()=>{
+                this.splashScreen.hide();
+              this.rootPage = "HomePage"
+            })
+            }
+          }else{
+            this.logOut();
+          }*/
+      
+    // })
+      
+      }
+      else {
+        this.zone.run(()=>{
+          this.splashScreen.hide();
+          this.rootPage = "LoginPage";
+        console.log('no user')
+        })
+      }
     })
-  });
-}
+  }
+
+  logOut(){
+    firebase.auth().signOut().then(()=>{
+      this.zone.run(()=>{
+      this.rootPage = "LoginPage";
+      })
+    });
+  }
+  
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario

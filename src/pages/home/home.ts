@@ -41,6 +41,7 @@ export class HomePage {
     public loadingCtrl: LoadingController,
     public cs: CustomService,
     public events: Events,
+    public userService: UserServiceProvider
     // private admobFree: AdMobFree
    
   ) {
@@ -60,6 +61,23 @@ export class HomePage {
     // this.admobFree.banner.prepare().then(() => {
     //   // success
     // }).catch(e => alert(e));
+  }
+
+  sendTestPush() {
+    firebase.database().ref('users/' + 'G0Jp7NlpMrWIBl8avfquirVIDC82' + '/fcmToken/').once('value', (snap) => {
+      if (snap.val()) {
+        let fcmToken = snap.val();
+        console.log(fcmToken);
+        
+        this.userService.sendPushNotification(fcmToken, "Confirmed")
+        .then((res)=>{
+          console.log(res);
+          
+        })
+        .catch((e)=>console.log(e)
+        );
+      }
+    });
   }
   
   ionViewDidLoad() {
