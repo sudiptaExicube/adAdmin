@@ -64,19 +64,37 @@ export class UserServiceProvider {
     return new Promise((resolve, reject) => {
       let url: string = 'https://fcm.googleapis.com/fcm/send';
 
+      //START
+      //ACCEPTED
+      //END
+      //PENDING
+      let msg = '';
+      if(msgBody == 'ACCEPTED') {
+        msg = 'Your Order has been accepted';
+      }
+      else if(msgBody == 'START') {
+        msg = `Your Order processing started`
+      }
+      else if(msgBody == 'END') {
+        msg = `Your Order is completed`
+      }
+      else if(msgBody == 'PENDING') {
+        msg = `Your Order processing is pending`
+      }
+      else if(msgBody == 'CANCEL') {
+        msg = `Your Order has been cancelled`
+      }
+      else {
+        msg = `Your Order ${msgBody}`
+      }
+
       let body: any = {
         "to": token,
         "notification": {
-          "title": "Check this Mobile (title)",
-          "body": msgBody,
-          "mutable_content": true,
-          "sound": "Tri-tone"
+          "title": "Your Order Status Changed",
+          "body": `${msg}`,
+          "mutable_content": true
         },
-    
-      "data": {
-          "url": "<url of media image>",
-          "dl": "<deeplink action on tap of notification>"
-        }
       }
       
       this.httpclient.post(url, body, {
