@@ -120,11 +120,36 @@ export class MyApp {
     
     this.firebasePlugin.getToken(token => {
       console.log(token)
-      let data = {
-        fcmToken: token
-      }
-      firebase.database().ref('users/' + currentUser + '/').update(data).then(()=>{
+      // let data = {
+      //   fcmToken: token
+      // }
+      firebase.database().ref('users/' + currentUser + '/fcmToken/').once('value', snap => {
+        let fcmTokens = snap.val();
+        if(fcmTokens) {
+          let fcmAlreadyExists = true;
+          for(let fcmKey in fcmTokens){
+            if(fcmTokens[fcmKey] == token) {
+              fcmAlreadyExists = true;
+              return;
+            }
+            else {
+              fcmAlreadyExists = false;
+            }
+          }
+
+          if(!fcmAlreadyExists) {
+            firebase.database().ref('users/' + currentUser + '/fcmToken/').push(token).then(()=>{
+            })
+          }
+        }
+        else {
+          firebase.database().ref('users/' + currentUser + '/fcmToken/').push(token).then(()=>{
+          })
+          return;
+        }
       })
+      // firebase.database().ref('users/' + currentUser + '/').update(data).then(()=>{
+      // })
     });
   }
 
@@ -132,8 +157,8 @@ export class MyApp {
     if (message.tap) { console.log(`Notification was tapped in the ${message.tap}`); }
 
     const alert = this.alertCtrl.create({
-      title: 'Message received',
-      subTitle: JSON.stringify(message),
+      title: message.title,
+      subTitle: message.body,
       buttons: ['OK']
     });
     alert.present();

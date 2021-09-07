@@ -22,6 +22,22 @@
       <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingTime}}</div>
       <div style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Service STAUS</div>
       <div style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.bookingStatus}}</div>
+
+      <div *ngIf="bookingdata?.rating" style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Rating</div>
+      <div *ngIf="bookingdata?.rating" style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">
+        <ionic3-star-rating #rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#ff0000"
+        defaultColor = "#aaaaaa"
+        readonly = "true"
+        rating = "{{bookingdata.rating}}"
+        fontSize = "30px">
+        </ionic3-star-rating>
+      </div>
+      <div *ngIf="bookingdata?.review && bookingdata?.review.length>0" style="font-size:15px;padding-bottom:6px;font-weight:bold;color:#3B3B3B">Review</div>
+      <div *ngIf="bookingdata?.review && bookingdata?.review.length>0" style="font-size:16px;padding-bottom:15px;font-weight:bold;color:#71737D;">{{bookingdata?.review}}</div>
+
       <button ion-button color="danger" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'PENDING'" (click)="changeStatus('ACCEPTED','accept')">ACCEPT SERVICE</button>
       <button ion-button color="fbBtnColor" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'ACCEPTED'" (click)="changeStatus('START','start')">START SERVICE</button>
       <button ion-button color="secondary" style="width:150px" *ngIf="bookingdata?.bookingStatus == 'START'" (click)="changeStatus('END','complete')">SERVICE DONE</button>

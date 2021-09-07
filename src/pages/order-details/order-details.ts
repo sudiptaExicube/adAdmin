@@ -234,6 +234,8 @@ export class OrderDetailsPage {
               firebase.database().ref('users/' + this.orderp.uid + '/my_booking/' + this.orderp.orderid + '/').update({
                 paymentStatus: 'PAID'
               }).then(() => {
+                this.sendPush(this.orderp.uid, "PAID");
+
                 this.cs.presentLoadingClose()
                 this.cs.presentToast('Payment Submited');
               })

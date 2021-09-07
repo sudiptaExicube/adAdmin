@@ -68,6 +68,7 @@ export class UserServiceProvider {
       //ACCEPTED
       //END
       //PENDING
+      // PAID
       let msg = '';
       if(msgBody == 'ACCEPTED') {
         msg = 'Your Order has been accepted';
@@ -84,6 +85,9 @@ export class UserServiceProvider {
       else if(msgBody == 'CANCEL') {
         msg = `Your Order has been cancelled`
       }
+      else if(msgBody == 'PAID') {
+        msg = `Your Payment is confirmed`
+      }
       else {
         msg = `Your Order ${msgBody}`
       }
@@ -93,7 +97,9 @@ export class UserServiceProvider {
         "notification": {
           "title": "Your Order Status Changed",
           "body": `${msg}`,
-          "mutable_content": true
+          "mutable_content": true,
+          "priority": "high",
+          "sound": "default"
         },
       }
       

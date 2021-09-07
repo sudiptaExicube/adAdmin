@@ -27,6 +27,20 @@
                 <h2>{{order.bookingTime}}</h2>
                 <h3><span style="color:black">ServiceId:&nbsp;</span>{{order.bookingId}}</h3>
                 <h3><span style="color:black">Price:&nbsp;</span> ₹{{order.orderPrice}}</h3>
+
+                <h3 *ngIf="order.rating"><span style="color:black">Rating:&nbsp;</span>
+                  <ionic3-star-rating #rating
+                  activeIcon = "ios-star"
+                  defaultIcon = "ios-star-outline"
+                  activeColor = "#ff0000"
+                  defaultColor = "#aaaaaa"
+                  readonly = "true"
+                  rating = "{{order.rating}}"
+                  fontSize = "16px">
+                  </ionic3-star-rating>
+                </h3>
+                <h3 *ngIf="order.review && order.review.length>0"><span style="color:black">Review:&nbsp;</span>{{order.review}}</h3>
+
               </div>
               <div class="item-segment2" >
                 <h3>status: <span>{{order.bookingStatus}}</span></h3>
